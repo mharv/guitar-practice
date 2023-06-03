@@ -21,7 +21,6 @@ function App() {
         while (stringSet.size < 6) {
             stringSet.add(generateRandomString());
         }
-        // convert the set to an array
         const stringSetArray = Array.from(stringSet);
         setStringSet(stringSetArray as string[]);
     }
@@ -30,7 +29,6 @@ function App() {
     const [noteSet, setNoteSet] = useState<string[]>();
 
     const generateRandomNote = () => {
-        //including sharps
         const notes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
         const randomNote = notes[Math.floor(Math.random() * notes.length)];
         return randomNote;
@@ -65,34 +63,36 @@ function App() {
 
     return (
         <div className="App">
+            <div className="container mx-auto p-8 m-10">
+                <p className="text-3xl text-gray-700 font-bold mb-5">
+                    PracGPP - Guitar practice platform
+                </p>
             <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
-                <div className="">
-                    <p className="text-3xl text-gray-700 font-bold mb-5">
-                        pracGPP - Guitar practice platform
-                    </p>
-
-                    <button className="bg-midnight px-6 py-2 text-white rounded-full" onClick={getRandomStringSet} >choose 6 strings at random</button>
-                    <div className="grid grid-cols-6 gap-4">
+                <div className="flex items-center">
+                    <p className="text-3xl text-gray-700 font-bold mb-5">String order:</p>
+                    <button className="bg-midnight px-6 py-2 ml-5 mb-5 text-white rounded-full" onClick={getRandomStringSet} >choose 6 strings at random</button>
+                </div>
+                <div className="grid grid-cols-6 gap-4">
                     {stringSet && stringSet.map((guitarString) => {
-                        return <p className="text-3xl font-bold "key={guitarString}>{guitarStringNumberLookup[guitarString] + ": " + guitarString}</p>
+                        return <p className="text-3xl font-bold " key={guitarString}>{guitarStringNumberLookup[guitarString] + ": " + guitarString}</p>
                     })}
-                    </div>
-
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <button className="bg-metal px-6 py-2 text-white rounded-full" onClick={generateRandomNoteSet} >choose 12 notes at random</button>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <div className="flex items-center">
                     <p className="text-3xl text-gray-700 font-bold mb-5">Notes:</p>
-                    <div className="grid grid-cols-12 gap-4">
-                        {noteSet && noteSet.map((note) => {
-                            return <p className="text-3xl font-bold"><span key={note}>{"  " + note + "  "}</span></p>
-                        })}
-                    </div>
+                    <button className="bg-metal px-6 py-2 ml-5 mb-5 text-white rounded-full" onClick={generateRandomNoteSet} >choose 12 notes at random</button>
+                </div>
+                <div className="grid grid-cols-12 gap-4">
+                    {noteSet && noteSet.map((note) => {
+                        return <p className="text-3xl font-bold"><span key={note}>{"  " + note + "  "}</span></p>
+                    })}
+                </div>
                 </div>
             </div>
-
         </div>
     );
 }
