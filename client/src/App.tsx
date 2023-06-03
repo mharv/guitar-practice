@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const guitarStringNumberLookup: { [key: string]: number } = {
     'E': 6,
@@ -61,6 +61,11 @@ function App() {
         setNoteSet(noteSetArray as string[]);
     }
 
+    useEffect(() => {
+        getRandomStringSet();
+        generateRandomNoteSet();
+    }, []);
+    
     return (
         <div className="App">
             <div className="container mx-auto p-8 m-10">
