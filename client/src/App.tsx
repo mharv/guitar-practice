@@ -66,27 +66,29 @@ function App() {
     return (
         <div className="App">
             <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
-                <p className="text-3xl text-gray-700 font-bold mb-5">
-                    pracGPP - Guitar practice platform
-                </p>
+                <div className="">
+                    <p className="text-3xl text-gray-700 font-bold mb-5">
+                        pracGPP - Guitar practice platform
+                    </p>
 
-                <button className="bg-midnight px-6 py-2 text-white rounded-full" onClick={getRandomStringSet} >choose 6 strings at random</button>
-                {stringSet && stringSet.map((guitarString) => {
-                    return <p key={guitarString}>{guitarStringNumberLookup[guitarString] + ": " + guitarString}</p>
-                })}
-
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <button className="bg-metal px-6 py-2 text-white rounded-full" onClick={generateRandomNoteSet} >choose 12 notes at random</button>
-                <p className="text-3xl text-gray-700 font-bold mb-5">Notes:</p>
-                <p>
-                    {noteSet && noteSet.map((note) => {
-                        return <span key={note}>{"  " + note + "  "}</span>
+                    <button className="bg-midnight px-6 py-2 text-white rounded-full" onClick={getRandomStringSet} >choose 6 strings at random</button>
+                    {stringSet && stringSet.map((guitarString) => {
+                        return <p key={guitarString}>{guitarStringNumberLookup[guitarString] + ": " + guitarString}</p>
                     })}
-                </p>
+
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <button className="bg-metal px-6 py-2 text-white rounded-full" onClick={generateRandomNoteSet} >choose 12 notes at random</button>
+                    <p className="text-3xl text-gray-700 font-bold mb-5">Notes:</p>
+                    <div className="grid grid-cols-12 gap-4">
+                        {noteSet && noteSet.map((note) => {
+                            return <p className="text-3xl font-bold"><span key={note}>{"  " + note + "  "}</span></p>
+                        })}
+                    </div>
+                </div>
             </div>
 
         </div>
