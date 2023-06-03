@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import './App.css';
 
+const guitarStringNumberLookup: { [key: string]: number } = {
+    'E': 6,
+    'A': 5,
+    'D': 4,
+    'G': 3,
+    'B': 2,
+    'e': 1
+};
+
 function App() {
     const generateRandomString = () => {
         const strings = ['E', 'A', 'D', 'G', 'B', 'e'];
@@ -28,8 +37,8 @@ function App() {
                 </p>
 
                 <button onClick={getRandomStringSet} >choose 6 strings at random</button>
-                {stringSet && stringSet.map((string) => {
-                    return <p>{string}</p>
+                {stringSet && stringSet.map((guitarString) => {
+                    return <p key={guitarString}>{guitarStringNumberLookup[guitarString] + ": " + guitarString}</p>
                 })}
             </header>
         </div>
