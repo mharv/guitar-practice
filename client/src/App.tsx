@@ -66,7 +66,17 @@ function App() {
     useEffect(() => {
         getRandomStringSet();
         generateRandomNoteSet();
+        generateRandomTriadExerciseDirection();
     }, []);
+
+    const [randomTriadExerciseDirection, setRandomTriadExerciseDirection] = useState<string>();
+
+    const generateRandomTriadExerciseDirection = () => {
+        const directions = ["Up Fretboard", "Down Fretboard", "Across Fretboard From 6th string", "Across Fretboard From 1st string"];
+        const randomDirection = directions[Math.floor(Math.random() * directions.length)];
+        setRandomTriadExerciseDirection(randomDirection);
+    }
+
 
     return (
         <div className="App">
@@ -104,6 +114,18 @@ function App() {
                         {noteSet && noteSet.map((note) => {
                             return <p className="text-5xl font-bold"><span key={note}>{"  " + note + "  "}</span></p>
                         })}
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div className="flex items-center">
+                        <p className="text-3xl text-gray-700 font-bold mb-5">Triad exercise:</p>
+                        <button className="bg-bubble-gum px-6 py-2 ml-5 mb-5 text-white rounded-full" onClick={generateRandomTriadExerciseDirection}>choose new exercise</button>
+                    </div>
+                    <div className="">
+                        <p className="text-5xl font-bold">{randomTriadExerciseDirection}</p>
                     </div>
                 </div>
             </div>
