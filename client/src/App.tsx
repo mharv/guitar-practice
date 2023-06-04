@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './routes/Home';
 import LearningFretboard from './routes/LearningFretboard';
+import NotFound from './routes/NotFound';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/LearningFretboard" element={<LearningFretboard />} />
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Router>
             </div>
