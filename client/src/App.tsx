@@ -61,7 +61,7 @@ function App() {
         setNoteSet(noteSetArray as string[]);
     }
 
-    const [showStringNumberOnly, setShowStringNumberOnly] = useState<boolean>(false);
+    const [showStringNumberOnly, setShowStringNumberOnly] = useState<boolean>(true);
 
     useEffect(() => {
         getRandomStringSet();
@@ -73,7 +73,10 @@ function App() {
 
     const generateRandomTriadExerciseDirection = () => {
         const directions = ["Up Fretboard", "Down Fretboard", "Across Fretboard From 6th string", "Across Fretboard From 1st string"];
-        const randomDirection = directions[Math.floor(Math.random() * directions.length)];
+        let randomDirection = directions[Math.floor(Math.random() * directions.length)];
+        while (randomDirection === randomTriadExerciseDirection) {
+            randomDirection = directions[Math.floor(Math.random() * directions.length)];
+        }
         setRandomTriadExerciseDirection(randomDirection);
     }
 
