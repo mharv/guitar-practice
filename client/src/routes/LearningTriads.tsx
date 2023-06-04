@@ -61,8 +61,6 @@ function LearningFretboard() {
         setNoteSet(noteSetArray as string[]);
     }
 
-    const [showStringNumberOnly, setShowStringNumberOnly] = useState<boolean>(true);
-
     useEffect(() => {
         getRandomStringSet();
         generateRandomNoteSet();
@@ -72,7 +70,15 @@ function LearningFretboard() {
     const [randomTriadExerciseDirection, setRandomTriadExerciseDirection] = useState<string>();
 
     const generateRandomTriadExerciseDirection = () => {
-        const directions = ["Up Fretboard", "Down Fretboard", "Across Fretboard From 6th string", "Across Fretboard From 1st string"];
+        // reqiure an origin e.g. 654 strings first for Up and Down Fretboard and inversion
+        // require an origin e.g. 1st or 12th fret for Across Fretboard
+        const directions = [
+            "Up Fretboard",
+            "Down Fretboard",
+            "Across Fretboard From 6th string",
+            "Across Fretboard From 1st string",
+            "Triad, 1st Inversion, 2nd Inversion",
+        ];
         let randomDirection = directions[Math.floor(Math.random() * directions.length)];
         while (randomDirection === randomTriadExerciseDirection) {
             randomDirection = directions[Math.floor(Math.random() * directions.length)];
@@ -82,27 +88,6 @@ function LearningFretboard() {
 
     return (
         <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
-            <div className="flex items-center">
-                <p className="text-3xl text-gray-700 font-bold mb-5">String order:</p>
-                <button className="bg-midnight px-6 py-2 ml-5 mb-5 text-white rounded-full" onClick={getRandomStringSet} >choose 6 strings at random</button>
-                <button className="bg-midnight px-6 py-2 ml-5 mb-5 text-white rounded-full" onClick={() => setShowStringNumberOnly(!showStringNumberOnly)} >toggle string notes on/off</button>
-            </div>
-            {showStringNumberOnly ?
-                <div className="grid grid-cols-6 gap-4">
-                    {stringSet && stringSet.map((guitarString) => {
-                        return <p className="text-5xl font-bold " key={guitarString}>{guitarStringNumberLookup[guitarString]}</p>
-                    })}
-                </div> :
-                <div className="grid grid-cols-6 gap-4">
-                    {stringSet && stringSet.map((guitarString) => {
-                        return <p className="text-5xl font-bold " key={guitarString}>{guitarStringNumberLookup[guitarString] + ": " + guitarString}</p>
-                    })}
-                </div>}
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
             <div className="flex items-center">
                 <p className="text-3xl text-gray-700 font-bold mb-5">Notes:</p>
                 <button className="bg-metal px-6 py-2 ml-5 mb-5 text-white rounded-full" onClick={generateRandomNoteSet} >choose 12 notes at random</button>
