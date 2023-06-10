@@ -89,6 +89,17 @@ function LearningFretboard() {
     return (
         <div className="container mx-auto bg-gray-200 rounded-xl shadow border p-8 m-10">
             <div className="flex items-center">
+                <p className="text-3xl text-gray-700 font-bold mb-5">as you are moving through the exercises, play the root, followed by the rest of the chord, or vis-a-vis</p>
+            </div>
+            <div className="flex items-center">
+                <p className="text-3xl text-gray-700 font-bold mb-5">pick two notes at random and a direction, alternate between these while playing triads in the direciton</p>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div className="flex items-center">
                 <p className="text-3xl text-gray-700 font-bold mb-5">Notes:</p>
                 <button className="bg-metal px-6 py-2 ml-5 mb-5 text-white rounded-full" onClick={generateRandomNoteSet} >choose 12 notes at random</button>
             </div>
