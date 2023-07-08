@@ -94,6 +94,12 @@ function LearningFretboard() {
             <div className="flex items-center">
                 <p className="text-3xl text-gray-700 font-bold mb-5">pick two notes at random and a direction, alternate between these while playing triads in the direciton</p>
             </div>
+            <div className="flex items-center">
+                <p className="text-3xl text-gray-700 font-bold mb-5">have a turn off sharps and flats option</p>
+            </div>
+            <div className="flex items-center">
+                <p className="text-3xl text-gray-700 font-bold mb-5">Play triad with root note X on bottom 3 strings and play triad with root note Y on top three strings in similar hand position</p>
+            </div>
             <br />
             <br />
             <br />
