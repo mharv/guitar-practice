@@ -16,6 +16,20 @@ function LearningFretboard() {
         return randomString;
     }
 
+
+    const [notePool, setNotePool] = useState<string[]>(['A', 'B', 'C', 'D', 'E', 'F', 'G']);
+    const toggleNotePool = () => {
+        console.log(notePool.length);
+        if (notePool.length === 12) {
+            setNotePool(['A', 'B', 'C', 'D', 'E', 'F', 'G']);
+        } else {
+            setNotePool(['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']);
+        }
+        // call this after to recreate the altered note set
+        generateRandomNoteSet();
+    }
+
+
     const getRandomStringSet = () => {
         const stringSet = new Set();
         while (stringSet.size < 6) {
@@ -29,8 +43,7 @@ function LearningFretboard() {
     const [noteSet, setNoteSet] = useState<string[]>();
 
     const generateRandomNote = () => {
-        const notes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
-        const randomNote = notes[Math.floor(Math.random() * notes.length)];
+        const randomNote = notePool[Math.floor(Math.random() * notePool.length)];
         return randomNote;
     }
 
@@ -47,7 +60,7 @@ function LearningFretboard() {
 
     const generateRandomNoteSet = () => {
         const noteSet = new Set();
-        while (noteSet.size < 12) {
+        while (noteSet.size < notePool.length) {
             let randomNote = generateRandomNote();
             if (randomNote.includes('#')) {
                 if (Math.random() < 0.5) {
@@ -94,8 +107,9 @@ function LearningFretboard() {
             <div className="flex items-center">
                 <p className="text-3xl text-gray-700 font-bold mb-5">Notes:</p>
                 <button className="bg-metal px-6 py-2 ml-5 mb-5 text-white rounded-full" onClick={generateRandomNoteSet} >choose 12 notes at random</button>
+                <button className="bg-metal px-6 py-2 ml-5 mb-5 text-white rounded-full" onClick={toggleNotePool} >toggle sharps/flats</button>
             </div>
-            <div className="grid grid-cols-12 gap-4">
+            <div className={`grid grid-cols-12 gap-4`}>
                 {noteSet && noteSet.map((note) => {
                     return <p className="text-5xl font-bold"><span key={note}>{"  " + note + "  "}</span></p>
                 })}
